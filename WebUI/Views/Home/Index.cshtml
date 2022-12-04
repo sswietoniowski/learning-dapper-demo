@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ProjectSummaryVM>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @foreach (var project in Model)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@project.Id - @project.Title</h2>
+                <p>Description: @project.Description</p>
+                <p>Manager: @project.ManagerName</p>
+                <p>Tasks #: @project.NumberOfTasks</p>
+            </div>
+        </div>
+    }
+</div>
