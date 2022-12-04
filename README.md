@@ -4,5 +4,5 @@ Small example showing use of Dapper instead of ADO.NET, "database first" approac
 
 Please remember that to start this app, you have to:
 
-- create a new MSSQL database name "DapperDemo" on a localhost (or change connection string),
-- create database schema by opening "Database" project and using "Publish".
+- create a new MSSQL database named "DapperDemo" on a localhost (or change the connection string),
+- create database schema by opening the "Database" project and using "Publish" from the context menu.
