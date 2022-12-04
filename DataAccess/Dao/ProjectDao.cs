@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using System.Data.SqlClient;
 
-namespace DataAccess;
+namespace DataAccess.Dao;
 
 public class ProjectDao : IProjectDao
 {
@@ -19,7 +19,7 @@ public class ProjectDao : IProjectDao
 
     public Project? GetById(int id)
     {
-        return _db.Query<Project>("SELECT Id, Title, Description, ManagerId FROM dbo.Projects WHERE Id = @Id", 
+        return _db.Query<Project>("SELECT Id, Title, Description, ManagerId FROM dbo.Projects WHERE Id = @Id",
             new { Id = id }).FirstOrDefault();
     }
 }

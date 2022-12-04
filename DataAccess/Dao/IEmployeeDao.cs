@@ -1,4 +1,4 @@
-﻿namespace DataAccess;
+﻿namespace DataAccess.Dao;
 
 public interface IEmployeeDao : IDao<Employee>
 {

@@ -1,4 +1,4 @@
-﻿namespace DataAccess;
+﻿namespace DataAccess.Dao;
 
 public interface IDao<T> where T : class
 {

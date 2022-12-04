@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using System.Data.SqlClient;
 
-namespace DataAccess;
+namespace DataAccess.Dao;
 
 public class ManagerDao : IManagerDao
 {

@@ -1,5 +1,5 @@
 ﻿using BusinessLogic.ViewModels;
-using DataAccess;
+using DataAccess.Dao;
 
 namespace BusinessLogic.Services;
 

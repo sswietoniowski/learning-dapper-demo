@@ -1,5 +1,6 @@
 using BusinessLogic.Services;
 using DataAccess;
+using DataAccess.Dao;
 
 var builder = WebApplication.CreateBuilder(args);
 
