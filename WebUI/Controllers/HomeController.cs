@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLogic.Services;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using BusinessLogic.Services;
 using WebUI.Models;
 
 namespace WebUI.Controllers;
@@ -16,9 +16,9 @@ public class HomeController : Controller
         _service = service;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var projects = _service.GetAllProjects();
+        var projects = await _service.GetAllProjectsAsync();
 
         return View(projects);
     }

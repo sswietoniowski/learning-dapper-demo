@@ -12,13 +12,13 @@ public class EmployeeDao : IEmployeeDao
         _db = new SqlConnection(connectionString);
     }
 
-    public IEnumerable<Employee> GetAll()
+    public async Task<IEnumerable<Employee>> GetAllAsync()
     {
-        return _db.Query<Employee>("SELECT Id, Name, SuperiorId FROM dbo.Employees").ToList();
+        return await _db.QueryAsync<Employee>("SELECT Id, Name, SuperiorId FROM dbo.Employees");
     }
 
-    public Employee? GetById(int id)
+    public async Task<Employee?> GetByIdAsync(int id)
     {
-        return _db.Query<Employee>("SELECT Id, Name, SuperiorId FROM dbo.Employees WHERE Id = @Id", new { Id = id }).FirstOrDefault();
+        return await _db.QueryFirstOrDefaultAsync<Employee>("SELECT Id, Name, SuperiorId FROM dbo.Employees WHERE Id = @Id", new { Id = id });
     }
 }

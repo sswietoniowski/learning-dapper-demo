@@ -12,14 +12,14 @@ public class ProjectDao : IProjectDao
         _db = new SqlConnection(connectionString);
     }
 
-    public IEnumerable<Project> GetAll()
+    public async Task<IEnumerable<Project>> GetAllAsync()
     {
-        return _db.Query<Project>("SELECT Id, Title, Description, ManagerId FROM dbo.Projects").ToList();
+        return await _db.QueryAsync<Project>("SELECT Id, Title, Description, ManagerId FROM dbo.Projects");
     }
 
-    public Project? GetById(int id)
+    public async Task<Project?> GetByIdAsync(int id)
     {
-        return _db.Query<Project>("SELECT Id, Title, Description, ManagerId FROM dbo.Projects WHERE Id = @Id",
-            new { Id = id }).FirstOrDefault();
+        return await _db.QueryFirstOrDefaultAsync<Project>("SELECT Id, Title, Description, ManagerId FROM dbo.Projects WHERE Id = @Id",
+            new { Id = id });
     }
 }

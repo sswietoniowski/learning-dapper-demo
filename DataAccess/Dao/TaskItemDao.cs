@@ -12,14 +12,14 @@ public class TaskItemDao : ITaskItemDao
         _db = new SqlConnection(connectionString);
     }
 
-    public IEnumerable<TaskItem> GetAll()
+    public async Task<IEnumerable<TaskItem>> GetAllAsync()
     {
-        return _db.Query<TaskItem>("SELECT Id, Title, Description, ProjectId, AssignedToId FROM dbo.TaskItems").ToList();
+        return await _db.QueryAsync<TaskItem>("SELECT Id, Title, Description, ProjectId, AssignedToId FROM dbo.TaskItems");
     }
 
-    public TaskItem? GetById(int id)
+    public async Task<TaskItem?> GetByIdAsync(int id)
     {
-        return _db.Query<TaskItem>("SELECT Id, Title, Description, ProjectId, AssignedToId FROM dbo.TaskItems WHERE Id = @Id",
-            new { Id = id }).FirstOrDefault();
+        return await _db.QueryFirstOrDefaultAsync<TaskItem>("SELECT Id, Title, Description, ProjectId, AssignedToId FROM dbo.TaskItems WHERE Id = @Id",
+            new { Id = id });
     }
 }

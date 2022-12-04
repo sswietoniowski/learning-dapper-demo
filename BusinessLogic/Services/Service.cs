@@ -18,11 +18,11 @@ public class Service : IService
         _taskItemDao = taskItemDao;
     }
 
-    public IEnumerable<ProjectSummaryVM> GetAllProjects()
+    public async Task<IEnumerable<ProjectSummaryVM>> GetAllProjectsAsync()
     {
-        var projects = _projectDao.GetAll();
-        var managers = _managerDao.GetAll();
-        var taskItems = _taskItemDao.GetAll();
+        var projects = await _projectDao.GetAllAsync();
+        var managers = await _managerDao.GetAllAsync();
+        var taskItems = await _taskItemDao.GetAllAsync();
 
         return projects.Select(p => new ProjectSummaryVM
         {

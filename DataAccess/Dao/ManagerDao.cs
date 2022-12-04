@@ -12,14 +12,14 @@ public class ManagerDao : IManagerDao
         _db = new SqlConnection(connectionString);
     }
 
-    public IEnumerable<Manager> GetAll()
+    public async Task<IEnumerable<Manager>> GetAllAsync()
     {
-        return _db.Query<Manager>("SELECT e.Id, Name, SuperiorId FROM dbo.Employees AS e INNER JOIN dbo.Managers AS m ON e.Id = m.Id").ToList();
+        return await _db.QueryAsync<Manager>("SELECT e.Id, Name, SuperiorId FROM dbo.Employees AS e INNER JOIN dbo.Managers AS m ON e.Id = m.Id");
     }
 
-    public Manager? GetById(int id)
+    public async Task<Manager?> GetByIdAsync(int id)
     {
-        return _db.Query<Manager>("SELECT e.Id, Name, SuperiorId FROM dbo.Employees AS e INNER JOIN dbo.Managers AS m ON e.Id = m.Id WHERE e.Id = @Id",
-            new { Id = id }).FirstOrDefault();
+        return await _db.QueryFirstOrDefaultAsync<Manager>("SELECT e.Id, Name, SuperiorId FROM dbo.Employees AS e INNER JOIN dbo.Managers AS m ON e.Id = m.Id WHERE e.Id = @Id",
+            new { Id = id });
     }
 }
