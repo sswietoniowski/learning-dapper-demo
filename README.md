@@ -1,6 +1,6 @@
 # Dapper Demo
 
-Small example showing use of Dapper instead of ADO.NET, "database first" approach and layered (n-tier) architecture. This sample was created for my own use during lectures, so nothing fancy here :-).
+Small example showing use of [Dapper](https://github.com/DapperLib/Dapper) instead of ADO.NET, "database first" approach and layered (n-tier) architecture. This sample was created for my own use during lectures, so nothing fancy here :-).
 
 Please remember that to start this app, you have to:
 
